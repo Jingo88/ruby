@@ -9,6 +9,7 @@
 monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana']
 monsterAtk = ['Slap', 'Bite', 'Eyepoke']
 
+
 hero = {
 	'health' => 10
 }
@@ -40,31 +41,4 @@ puts hero
 puts "Your weapon of choice is the #{hero['weapon']} your attack damage range is #{hero['atkrange']}"
 puts "Your current health is #{hero['health']}"
 
-
-
-
-
-
-
-
-
-
-
-
-
-puts 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+puts "A  attacks! Do you want to fight? (type 'y' or 'n')"
