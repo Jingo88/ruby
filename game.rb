@@ -6,13 +6,47 @@
 # experience points and levels
 # hp points and levels
 
-monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana']
-monsterAtk = ['Slap', 'Bite', 'Eyepoke']
-
 
 hero = {
 	'health' => 10
 }
+
+monster = {
+
+}
+
+monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana'].sample
+monsterAtk => ['Slap', 'Bite', 'Eyepoke']
+
+
+# choosing the random monster, must push their stats into the monster hash
+def monsterfight
+
+	monsterDmg = ''
+end
+
+
+# choosing the random attack of the monster. no need to push into a hash
+def monsterAttack(monsters, hero)
+
+	randAttack = Random.rand(monsterAtk.length).to_i
+
+	if randAttack == 0
+		monsterDmg = 1
+		hero['health'] -= 1
+
+	elsif randAttack == 1
+		monsterDmg = 2
+
+	elsif randAttack == 2
+		monsterDmg = 3
+	end
+  
+end
+
+
+# random monster does random attack for random damage, you now have x amount of health left
+# do you choose to continue fighting? (yes or no);
 
 puts "Welcome Adventurer, state your name if intend to join this quest"
 
@@ -41,4 +75,9 @@ puts hero
 puts "Your weapon of choice is the #{hero['weapon']} your attack damage range is #{hero['atkrange']}"
 puts "Your current health is #{hero['health']}"
 
-puts "A  attacks! Do you want to fight? (type 'y' or 'n')"
+# <<<<<<< HEAD
+# puts "A  attacks! Do you want to fight? (type 'y' or 'n')"
+# =======
+puts "#{monsters.sample} attack"
+puts "#{monsterAtk.sample}!"
+puts "Your current health is #{hero['health']}"
