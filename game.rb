@@ -1,3 +1,4 @@
+require 'pry'
 # array of monsters
 # array of weapons
 # array of attacks
@@ -5,24 +6,49 @@
 # run or fight
 # experience points and levels
 # hp points and levels
-
+puts self
 hero = {
 	'health' => 10
 }
 
-monster = {
+
+enemy = {
 
 }
 
+monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana']
+monsterAtk = ['Slap', 'Bite', 'Eyepoke']
+monsterDmg = ''
+
+# def randommonster
+# 	monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana'].sample
+# 	puts monsters
+# end
+
 # choosing the random monster, must push their stats into the monster hash
+
 def monsterfight
+	binding.pry
+	puts self
+	# puts randommonster
+	puts 'WE ARE IN MONSTERFIGHT '
+	enemy["type"] = monsters.sample
 
-	monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana']
-	monsterAtk = ['Slap', 'Bite', 'Eyepoke']
-	monsterDmg = ''
-
-	randMonster = Random.rand(monsters.length).to_i
 end
+
+
+# Jasons-MacBook-Air:ruby Jason$ pry
+# [1] pry(main)> a = {}
+# => {}
+# [2] pry(main)> def blah(h)
+# [2] pry(main)*   h["foo"] = "bar"
+# [2] pry(main)* end  
+# => :blah
+# [3] pry(main)> blah(a)
+# => "bar"
+# [4] pry(main)> a
+# => {"foo"=>"bar"}
+# [5] pry(main)> 
 
 
 # choosing the random attack of the monster. no need to push into a hash
@@ -75,6 +101,19 @@ puts "Your weapon of choice is the #{hero['weapon']} your attack damage range is
 puts "Your current health is #{hero['health']}"
 
 
+puts ""
+
+puts "Alright #{hero['name']} you are now prepared to venture the wilderness with me, let us depart"
+
+# randommonster
+
+monsterfight
+
+puts monsters
+
+puts hero
+
+# puts monster
 
 
 
