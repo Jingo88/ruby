@@ -6,8 +6,11 @@ require 'pry'
 # run or fight
 # experience points and levels
 # hp points and levels
-puts self
+
+
 hero = {
+	'atkSpd' => 8
+	'level' => 1
 	'health' => 10
 }
 
@@ -20,19 +23,51 @@ monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Monta
 monsterAtk = ['Slap', 'Bite', 'Eyepoke']
 monsterDmg = ''
 
-# def randommonster
-# 	monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana'].sample
-# 	puts monsters
-# end
+# bring the values into monsterfight. 
+def monsterfight(user, monster, mAtk)
+	enemy = {}
 
-# choosing the random monster, must push their stats into the monster hash
+	enemy['name'] = monster.sample
 
-def monsterfight
-	binding.pry
-	puts self
-	# puts randommonster
-	puts 'WE ARE IN MONSTERFIGHT '
-	enemy["type"] = monsters.sample
+	if enemy['name'] == 'Mutated Octopus'
+		enemy['hp'] = 7
+		enemy['atkSpd'] = 6
+		enemy['armor'] = 1
+
+	elsif enemy['name'] == 'Sabertooth Goldfish'
+		enemy['hp'] = 6
+		enemy['atkSpd'] = 5
+		enemy['armor'] = 1
+
+	elsif enemy ['name'] == 'Lady Gaga'
+		enemy['hp'] = 8
+		enemy['atkSpd'] = 8
+		enemy['armor'] = 1
+
+	elsif enemy ['name'] == 'Hannah Montana'
+		enemy['hp'] = 10
+		enemy['atkSpd'] = 10
+		enemy['armor'] = 1
+
+	end
+
+	puts ''
+
+	puts "A wild #{enemy['name']} has appeared. Do you choose to fight or run? (enter the command fight or run)"
+
+	choice = gets.chomp.downcase
+
+	if choice == 'fight'
+		puts 'Alright lets do this!'
+		if 
+
+	elsif choice == 'run'
+		puts 'You attempt to escape'
+
+	else 
+		puts 'Please enter "fight" or "run"'
+		choice = gets.chomp.downcase
+	end
 
 end
 
@@ -107,11 +142,11 @@ puts "Alright #{hero['name']} you are now prepared to venture the wilderness wit
 
 # randommonster
 
-monsterfight
+monsterfight(hero,monsters,monsterAtk)
 
-puts monsters
+# puts monsters
 
-puts hero
+# puts hero
 
 # puts monster
 
