@@ -9,18 +9,19 @@ require 'pry'
 
 
 hero = {
-	'atkSpd' => 8
-	'level' => 1
-	'health' => 10
+	'atkSpd' => 8,
+	'level' => 1,
+	'health' => 10,
 }
+
+enemy = {}
 
 monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana']
 monsterAtk = ['Slap', 'Bite', 'Eyepoke']
 monsterDmg = ''
 
 # bring the values into monsterfight. 
-def monsterfight(user, monster, mAtk)
-	enemy = {}
+def monsterfight(user, monster, mAtk, enemy)
 
 	enemy['name'] = monster.sample
 
@@ -48,7 +49,7 @@ def monsterfight(user, monster, mAtk)
 	puts ''
 
 # choosing the random attack of the monster. no need to push into a hash
-	def monsterAttack(monsters, hero)
+	def monsterAttack(user, mAtk, enemy)
 		randAttack = mAtk.sample
 
 		if randAttack == 'Slap'
@@ -64,9 +65,11 @@ def monsterfight(user, monster, mAtk)
 			user['health'] -= 1
 		end
 
+		puts "You get hit by #{enemy['name']} for #{monsterDmg}. Your health is now #{user['health']}"
+		
 	end
 
-	def heroAttack
+	def heroAttack(user, enemy)
 
 		heroAttack = user['weapon']
 
@@ -83,13 +86,16 @@ def monsterfight(user, monster, mAtk)
 			enemy['hp'] -= hitDmg
 		end
 
+		puts "You hit the #{enemy['name']} for #{hitDmg}. Their health is now #{enemy['hp']}"
 	end
 
-	def fight
+	# def fight
+		# monsterAttack(user, mAtk)
+		# heroAttack(user, mAtk)
 		# if you are fighting take the monsters health and take the users health. 
 		# choose a random monster attack, give each attack different damage. 
 		# make the damage subtract from the user health. 
-	end
+	# end
 
 	puts "A wild #{enemy['name']} has appeared. Do you choose to fight or run? (enter the command fight or run)"
 
@@ -97,7 +103,8 @@ def monsterfight(user, monster, mAtk)
 
 	if choice == 'fight'
 		puts 'Alright lets do this!'
-		fight
+		monsterAttack(user, mAtk, enemy)
+		heroAttack(user, enemy)
 
 	elsif choice == 'run'
 		puts 'You attempt to escape'
@@ -151,7 +158,7 @@ puts ""
 puts "Alright #{hero['name']} you are now prepared to venture the wilderness with me, let us depart"
 
 # calls the method while bringing in our arrays and hashes
-monsterfight(hero,monsters,monsterAtk)
+monsterfight(hero,monsters,monsterAtk, enemy)
 
 
 
