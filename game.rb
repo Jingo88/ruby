@@ -53,13 +53,58 @@ def monsterfight(user, monster, mAtk)
 
 	puts ''
 
+	def monsterAttack
+
+		randAttack = mAtk.sample
+
+		if randAttack == 'Slap'
+			monsterDmg = 1
+			user['health'] -= 1
+
+		elsif randAttack == 'Bite'
+			monsterDmg = 2
+			user['health'] -= 1
+
+		elsif randAttack == 'Eyepoke'
+			monsterDmg = 3
+			user['health'] -= 1
+		end
+
+	end
+
+	def heroAttack
+
+		heroAttack = user['weapon']
+
+		if heroAttack == 'Sword'
+			hitDmg = 1
+			enemy['hp'] -= hitDmg
+
+		elsif heroAttack == 'Spear'
+			hitDmg = 2
+			enemy['hp'] -= hitDmg
+
+		elsif heroAttack == 'Axe'
+			hitDmg = 3
+			enemy['hp'] -= hitDmg
+		end
+
+	end
+
+	def fight
+		if 
+		# if you are fighting take the monsters health and take the users health. 
+		# choose a random monster attack, give each attack different damage. 
+		# make the damage subtract from the user health. 
+	end
+
 	puts "A wild #{enemy['name']} has appeared. Do you choose to fight or run? (enter the command fight or run)"
 
 	choice = gets.chomp.downcase
 
 	if choice == 'fight'
 		puts 'Alright lets do this!'
-		if 
+		fight
 
 	elsif choice == 'run'
 		puts 'You attempt to escape'
@@ -84,29 +129,6 @@ end
 # [4] pry(main)> a
 # => {"foo"=>"bar"}
 # [5] pry(main)> 
-
-
-# choosing the random attack of the monster. no need to push into a hash
-def monsterAttack
-
-	randAttack = Random.rand(monsterAtk.length).to_i
-
-	if randAttack == 0
-		monsterDmg = 1
-		hero['health'] -= 1
-
-	elsif randAttack == 1
-		monsterDmg = 2
-
-	elsif randAttack == 2
-		monsterDmg = 3
-
-	end
-end
-
-
-# random monster does random attack for random damage, you now have x amount of health left
-# do you choose to continue fighting? (yes or no);
 
 puts "Welcome Adventurer, state your name if intend to join this quest"
 
@@ -135,20 +157,12 @@ puts hero
 puts "Your weapon of choice is the #{hero['weapon']} your attack damage range is #{hero['atkrange']}"
 puts "Your current health is #{hero['health']}"
 
-
 puts ""
 
 puts "Alright #{hero['name']} you are now prepared to venture the wilderness with me, let us depart"
 
-# randommonster
-
 monsterfight(hero,monsters,monsterAtk)
 
-# puts monsters
-
-# puts hero
-
-# puts monster
 
 
 
