@@ -14,11 +14,6 @@ hero = {
 	'health' => 10
 }
 
-
-enemy = {
-
-}
-
 monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana']
 monsterAtk = ['Slap', 'Bite', 'Eyepoke']
 monsterDmg = ''
@@ -48,13 +43,12 @@ def monsterfight(user, monster, mAtk)
 		enemy['hp'] = 10
 		enemy['atkSpd'] = 10
 		enemy['armor'] = 1
-
 	end
 
 	puts ''
 
-	def monsterAttack
-
+# choosing the random attack of the monster. no need to push into a hash
+	def monsterAttack(monsters, hero)
 		randAttack = mAtk.sample
 
 		if randAttack == 'Slap'
@@ -92,7 +86,6 @@ def monsterfight(user, monster, mAtk)
 	end
 
 	def fight
-		if 
 		# if you are fighting take the monsters health and take the users health. 
 		# choose a random monster attack, give each attack different damage. 
 		# make the damage subtract from the user health. 
@@ -113,9 +106,7 @@ def monsterfight(user, monster, mAtk)
 		puts 'Please enter "fight" or "run"'
 		choice = gets.chomp.downcase
 	end
-
 end
-
 
 # Jasons-MacBook-Air:ruby Jason$ pry
 # [1] pry(main)> a = {}
@@ -152,8 +143,6 @@ else
 
 end
 
-puts hero
-
 puts "Your weapon of choice is the #{hero['weapon']} your attack damage range is #{hero['atkrange']}"
 puts "Your current health is #{hero['health']}"
 
@@ -161,9 +150,8 @@ puts ""
 
 puts "Alright #{hero['name']} you are now prepared to venture the wilderness with me, let us depart"
 
+# calls the method while bringing in our arrays and hashes
 monsterfight(hero,monsters,monsterAtk)
-
-
 
 
 
