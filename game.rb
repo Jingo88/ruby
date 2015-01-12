@@ -1,7 +1,4 @@
 require 'pry'
-# array of monsters
-# array of weapons
-# array of attacks
 # random weapon attack damage
 # run or fight
 # experience points and levels
@@ -23,7 +20,11 @@ monsterDmg = ''
 # bring the values into monsterfight. 
 def monsterfight(user, monster, mAtk, enemy)
 
+#make a loop with a boolean value. The loop will keep running unless somebody's health goes to zero or 
+#the user runs away
+
 	enemy['name'] = monster.sample
+	combat = true
 
 	if enemy['name'] == 'Mutated Octopus'
 		enemy['hp'] = 7
@@ -74,59 +75,63 @@ def monsterfight(user, monster, mAtk, enemy)
 		heroAttack = user['weapon']
 
 		if heroAttack == 'Sword'
-			hitDmg = 1
+			hitDmg = rand(2...5)
 			enemy['hp'] -= hitDmg
 
 		elsif heroAttack == 'Spear'
-			hitDmg = 2
+			hitDmg = rand(1...6)
 			enemy['hp'] -= hitDmg
 
 		elsif heroAttack == 'Axe'
-			hitDmg = 3
+			hitDmg = rand(3...4)
 			enemy['hp'] -= hitDmg
 		end
-
+		
 		puts "You hit the #{enemy['name']} for #{hitDmg}. Their health is now #{enemy['hp']}"
 	end
 
-	# def fight
-		# monsterAttack(user, mAtk)
-		# heroAttack(user, mAtk)
-		# if you are fighting take the monsters health and take the users health. 
-		# choose a random monster attack, give each attack different damage. 
-		# make the damage subtract from the user health. 
-	# end
-
-	puts "A wild #{enemy['name']} has appeared. Do you choose to fight or run? (enter the command fight or run)"
+	puts "A wild #{enemy['name']} has appeared. Do you choose to fight or run? (enter 'fight' or 'run')"
 
 	choice = gets.chomp.downcase
 
-	if choice == 'fight'
-		puts 'Alright lets do this!'
-		monsterAttack(user, mAtk, enemy)
-		heroAttack(user, enemy)
+	while (user['health'] > 0 && enemy['hp'] > 0 && combat == true)
 
-	elsif choice == 'run'
-		puts 'You attempt to escape'
+		if choice == 'fight'
+			puts 'Alright lets do this!'
+			monsterAttack(user, mAtk, enemy)
+			heroAttack(user, enemy)
 
-	else 
-		puts 'Please enter "fight" or "run"'
-		choice = gets.chomp.downcase
+		elsif choice == 'run'
+			puts 'You attempt to escape'
+
+		elsif choice != 'fight' || choice != 'run' 
+			puts 'Please enter "fight" or "run"'
+			choice = gets.chomp.downcase
+		end
+
+		if enemy['hp'] > 0 && user['health']
+			puts "Continue fighting? (fight or run)"
+			choice = gets.chomp.downcase
+
+		elsif enemy['hp'] <= 0
+			puts "You have killed #{enemy['name']}"
+			combat == false
+
+		elsif user['health'] <= 0
+			puts "You have died"
+			combat == false
+		end
 	end
+
 end
 
-# Jasons-MacBook-Air:ruby Jason$ pry
-# [1] pry(main)> a = {}
-# => {}
-# [2] pry(main)> def blah(h)
-# [2] pry(main)*   h["foo"] = "bar"
-# [2] pry(main)* end  
-# => :blah
-# [3] pry(main)> blah(a)
-# => "bar"
-# [4] pry(main)> a
-# => {"foo"=>"bar"}
-# [5] pry(main)> 
+
+
+
+
+
+
+
 
 puts "Welcome Adventurer, state your name if intend to join this quest"
 
