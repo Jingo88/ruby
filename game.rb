@@ -3,7 +3,7 @@ require 'pry'
 # run or fight
 # experience points and levels
 # hp points and levels
-
+# 
 
 hero = {
 	'atkSpd' => 8,
@@ -12,6 +12,8 @@ hero = {
 }
 
 enemy = {}
+
+enemyrwear = {}
 
 monsters = ['Mutated Octopus', 'Sabertooth Goldfish', 'Lady Gaga', 'Hannah Montana']
 monsterAtk = ['Slap', 'Bite', 'Eyepoke']
